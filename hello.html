@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="search_form">
+            <div class="logo"><img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt="logo"></div>
+            <div class="form_group">
+                <input type="text" class="input_txt" placeholder="Please input a city name"
+                    @keyup.enter="searchWeather" v-model="city"/>
+                <button class="input_sub" @click="searchWeather">
+                    Search
+                </button>
+            </div>
+            <div class="hotkey">
+                <a href="javascript:;" @click="changeCity('北京')">Beijing</a>
+                <a href="javascript:;" @click="changeCity('上海')">Shanghai</a>
+                <a href="javascript:;" @click="changeCity('广州')">Guangzhou</a>
+                <a href="javascript:;" @click="changeCity('深圳')">Shenzhen</a>
+            </div>
+        </div>
+        <ul class="weather_list">
+            <li v-for="weather in weatherList">
+                <div class="info_type"><span class="iconfont">{{ weather.type }}</span></div>
+                <div class="info_temp">
+                    <b>{{ weather.low }}</b>
+                    ~
+                    <b>{{ weather.high }}</b>
+                </div>
+                <div class="info_date"><span>{{ weather.date }}</span></div>
+            </li>
+        </ul>
+    </div>
+    <!-- Vue 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="./js/hello.js"></script>
+    <script>
+        /*
+            Interface 1: jokes
+            url: https://autumnfish.cn/api/joke/list
+            method: GET
+            params: num
+            response: jokes
+        */
+        /*
+            Interface 2: register
+            url: https://autumnfish.cn/api/user/reg
+            method: POST
+            params: username
+            response: success or failed
+        */
+    </script>
+</body>
+
+</html>

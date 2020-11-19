@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatiable" content="ie=edge">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="play_wrap" id="player">
+            <div class="search_bar">
+                <img src="" alt="">
+                <input type="text" autocomplete="off" v-model="query" @keyup.enter="searchMusic">
+            </div>
+            <div class="center_con">
+                <div class="song_wrapper" ref='song_wrapper'>
+                    <ul class="song_list">
+                        <li v-for="music in musicList">
+                            <a href="javascript:;" @click="playMusic(music.id)"></a>
+                            <b>{{ music.name }}</b>
+                            <span v-if="music.mvid!=0" @click="playMv(music.mvid)"><i></i></span>
+                        </li>
+                    </ul>
+                    <img src="./images/line.png" class="switch_btn" alt="">
+                </div>
+                <div class="player_con" :class="{playing:isPlaying}">
+                    <img src="./images/player_bar.png" class="play_bar" alt="">
+                    <img src="./images/disc.png" class="disc autoRotate" alt="">
+                    <img :src="musicCover" class="cover autoRotate" alt="">
+                </div>
+                <div class="comment_wrapper">
+                    <h5 class="title">Hot Comments</h5>
+                    <div class="comment_list">
+                        <dl v-for="comment in hotComments">
+                            <dt><img :src="comment.user.avatarUrl" alt=""></dt>
+                            <dd class="name">{{ comment.user.nickname }}</dd>
+                            <dd class="detail">{{ comment.content }}</dd>
+                        </dl>
+                    </div>
+                    <img src="./images/line.png" class="right_line" alt="">
+                </div>
+            </div>
+            <div class="audio_con">
+                <audio ref="audio" :src="musicUrl" @play="play" @pause="pause" controls autoplay loop
+                    class="myaudio"></audio>
+            </div>
+            <div class="video_con" v-if="isMvShown">
+                <video :src="mvUrl" controls="controls" autoplay></video>
+                <div class="mask" @click="closeMv"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Vue 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="./js/music.js"></script>
+</body>
+
+</html>
