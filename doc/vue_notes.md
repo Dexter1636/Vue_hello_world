@@ -12,7 +12,7 @@ Although not strictly associated with the MVVM pattern, Vue’s design was partl
 ## The Vue Instance
 
 ```JS
-var vm = new Vue({
+var app = new Vue({
   el: "#app",
     data: {
         city: "",
@@ -57,23 +57,27 @@ Listens to DOM events.
 <a @click="doSomething"> ... </a>
 ```
 
-### v-show
-
-```HTML
-<h1 v-show="ok">Hello!</h1>
-```
-
 ### v-if
 
-Here, the `v-if` directive would remove/insert the `<p>` element based on the truthiness of the value of the expression seen.
+The directive `v-if` is used to conditionally render a block.
 
 ```HTML
 <p v-if="seen">Now you see me</p>
 ```
 
+### v-show
+
+`v-show` is another option for conditionally displaying an element.
+
+```HTML
+<h1 v-show="ok">Hello!</h1>
+```
+
+The difference is that an element with `v-show` will always be rendered and remain in the DOM; `v-show` only toggles the display CSS property of the element.
+
 ### v-bind
 
-Mustaches cannot be used inside HTML attributes. Instead, use a `v-bind` directive:
+Mustaches cannot be used inside HTML attributes. Instead, use a `v-bind` directive.
 
 ```HTML
 <!-- full syntax -->
@@ -121,4 +125,22 @@ We can also use `v-for` to iterate through the properties of an object.
 <p>Message is: {{ message }}</p>
 ```
 
-## Vue + axios (todo)
+## Vue + axios
+
+```JS
+var vm = new Vue({
+  el: "#app",
+    data: {
+        musicList: [],
+    },
+    methods: {
+        searchMusic: function () {
+            var that = this
+            axios.get("https://autumnfish.cn/search?keywords=" + this.query)
+                .then(function (response) {
+                    that.musicList = response.data.result.songs
+                }, function (err) { })
+        },
+    },
+})
+```
