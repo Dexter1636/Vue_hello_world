@@ -39,7 +39,7 @@ Instance Lifecycle Hooks（todo）
 
 ### v-html
 
-The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, you will need to use the `v-html` directive:
+The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, we need to use `v-html`.
 
 ```HTML
 <p>Using v-html directive: <span v-html="rawHtml"></span></p>
@@ -47,7 +47,7 @@ The double mustaches interprets the data as plain text, not HTML. In order to ou
 
 ### v-on
 
-Listens to DOM events.
+`v-on` is used to listen to DOM events.
 
 ```HTML
 <!-- full syntax -->
@@ -59,7 +59,7 @@ Listens to DOM events.
 
 ### v-if
 
-The directive `v-if` is used to conditionally render a block.
+`v-if` is used to conditionally render a block.
 
 ```HTML
 <p v-if="seen">Now you see me</p>
@@ -89,7 +89,7 @@ Mustaches cannot be used inside HTML attributes. Instead, use a `v-bind` directi
 
 ### v-for
 
-We can use the `v-for` directive to render a list of items based on an array.
+We can use `v-for` to render a list of items based on an array.
 
 ```HTML
 <ul id="example-1">
@@ -118,7 +118,7 @@ We can also use `v-for` to iterate through the properties of an object.
 
 ### v-model
 
- We can use `v-model` directive to create two-way data bindings on form `<input>`, `<textarea>`, and `<select>` elements.
+ We can use `v-model` to create two-way data bindings on form `<input>`, `<textarea>`, and `<select>` elements.
 
 ```HTML
 <input v-model="message" placeholder="edit me">
