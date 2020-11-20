@@ -87,6 +87,14 @@ Mustaches cannot be used inside HTML attributes. Instead, use a `v-bind` directi
 <a :href="url"> ... </a>
 ```
 
+We can pass an object to `v-bind:class` to dynamically toggle classes:
+
+```HTML
+<div v-bind:class="{ active: isActive }"></div>
+```
+
+The above syntax means the presence of the `active` class will be determined by the truthiness of the data property `isActive`.
+
 ### v-for
 
 We can use `v-for` to render a list of items based on an array.
